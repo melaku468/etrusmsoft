@@ -37,8 +37,10 @@ const Navigation = () => {
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-2">
-            <div className="text-2xl font-bold text-primary">
-              ETRUS <span className="text-foreground">Tech</span>
+            <div className={`text-2xl font-bold transition-colors duration-300 ${
+              isScrolled ? "text-primary" : "text-primary-foreground"
+            }`}>
+              ETRUS <span className={isScrolled ? "text-foreground" : "text-primary-foreground/90"}>Tech</span>
             </div>
           </Link>
 
@@ -48,16 +50,16 @@ const Navigation = () => {
               <Link
                 key={link.path}
                 to={link.path}
-                className={`text-sm font-medium transition-colors duration-300 ${
+                className={`text-sm font-semibold transition-colors duration-300 ${
                   isActive(link.path)
-                    ? "text-primary"
-                    : "text-foreground hover:text-primary"
+                    ? isScrolled ? "text-primary" : "text-primary-foreground"
+                    : isScrolled ? "text-foreground hover:text-primary" : "text-primary-foreground/90 hover:text-primary-foreground"
                 }`}
               >
                 {link.label}
               </Link>
             ))}
-            <Button asChild size="default">
+            <Button asChild size="default" variant={isScrolled ? "default" : "hero"}>
               <Link to="/contact">Get Started</Link>
             </Button>
           </div>
@@ -69,9 +71,9 @@ const Navigation = () => {
             aria-label="Toggle menu"
           >
             {isMobileMenuOpen ? (
-              <X className="h-6 w-6 text-foreground" />
+              <X className={`h-6 w-6 transition-colors ${isScrolled ? "text-foreground" : "text-primary-foreground"}`} />
             ) : (
-              <Menu className="h-6 w-6 text-foreground" />
+              <Menu className={`h-6 w-6 transition-colors ${isScrolled ? "text-foreground" : "text-primary-foreground"}`} />
             )}
           </button>
         </div>
