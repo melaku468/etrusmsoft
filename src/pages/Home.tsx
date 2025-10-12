@@ -81,9 +81,9 @@ const Home = () => {
             <div className="inline-block px-4 py-2 bg-primary-foreground/10 backdrop-blur-sm rounded-full mb-6">
               <span className="text-sm font-semibold">Official Microsoft Partner</span>
             </div>
-            <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
+            <h2 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
               Empowering Business Through Microsoft Innovation
-            </h1>
+            </h2>
             <p className="text-xl md:text-2xl mb-8 text-primary-foreground/90 leading-relaxed">
               Transform your organization with cutting-edge cloud solutions, powered by Microsoft technologies and delivered by certified experts.
             </p>
