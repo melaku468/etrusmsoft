@@ -42,7 +42,19 @@ const Navigation = () => {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
-            {navLinks.map(link => {})}
+            {navLinks.map(link => (
+              <Link
+                key={link.path}
+                to={link.path}
+                className={`text-sm font-semibold transition-colors duration-300 ${
+                  isActive(link.path)
+                    ? isScrolled ? "text-primary" : "text-primary-foreground border-b-2 border-primary-foreground"
+                    : isScrolled ? "text-foreground hover:text-primary" : "text-primary-foreground hover:text-primary-foreground/80"
+                }`}
+              >
+                {link.label}
+              </Link>
+            ))}
             <Button asChild size="default" variant={isScrolled ? "default" : "hero"}>
               <Link to="/contact">Get Started</Link>
             </Button>
