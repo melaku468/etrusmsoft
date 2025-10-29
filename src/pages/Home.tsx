@@ -7,75 +7,57 @@ import TestimonialCard from "@/components/TestimonialCard";
 import CaseStudyCard from "@/components/CaseStudyCard";
 import { Cloud, Database, Shield, Zap, Users, TrendingUp } from "lucide-react";
 import heroImage from "@/assets/hero-bg.jpg";
-
 const Home = () => {
-  const services = [
-    {
-      icon: Cloud,
-      title: "Azure Cloud Solutions",
-      description: "Migrate and optimize your infrastructure with Microsoft Azure for scalability and security.",
-    },
-    {
-      icon: Database,
-      title: "Data Analytics",
-      description: "Transform data into insights with Power BI and advanced analytics solutions.",
-    },
-    {
-      icon: Shield,
-      title: "Security & Compliance",
-      description: "Protect your business with enterprise-grade security powered by Microsoft technologies.",
-    },
-    {
-      icon: Zap,
-      title: "Microsoft 365",
-      description: "Empower your workforce with integrated collaboration and productivity tools.",
-    },
-    {
-      icon: Users,
-      title: "Dynamics 365",
-      description: "Streamline operations with intelligent business applications and CRM solutions.",
-    },
-    {
-      icon: TrendingUp,
-      title: "Digital Transformation",
-      description: "Drive innovation and growth with comprehensive digital transformation strategies.",
-    },
-  ];
-
-  const testimonials = [
-    {
-      quote: "ETRUS Tech transformed our business operations with their Azure migration expertise. The transition was seamless and our efficiency has increased by 40%.",
-      author: "Sarah Johnson",
-      position: "CTO",
-      company: "TechCorp Industries",
-    },
-    {
-      quote: "Their Microsoft 365 implementation has revolutionized how our team collaborates. Outstanding support and deep technical knowledge.",
-      author: "Michael Chen",
-      position: "IT Director",
-      company: "Global Finance Solutions",
-    },
-    {
-      quote: "The Dynamics 365 solution ETRUS Tech delivered exceeded our expectations. Our sales team productivity has skyrocketed.",
-      author: "Emily Rodriguez",
-      position: "VP of Operations",
-      company: "Retail Innovations Inc",
-    },
-  ];
-
-  return (
-    <div className="min-h-screen">
+  const services = [{
+    icon: Cloud,
+    title: "Azure Cloud Solutions",
+    description: "Migrate and optimize your infrastructure with Microsoft Azure for scalability and security."
+  }, {
+    icon: Database,
+    title: "Data Analytics",
+    description: "Transform data into insights with Power BI and advanced analytics solutions."
+  }, {
+    icon: Shield,
+    title: "Security & Compliance",
+    description: "Protect your business with enterprise-grade security powered by Microsoft technologies."
+  }, {
+    icon: Zap,
+    title: "Microsoft 365",
+    description: "Empower your workforce with integrated collaboration and productivity tools."
+  }, {
+    icon: Users,
+    title: "Dynamics 365",
+    description: "Streamline operations with intelligent business applications and CRM solutions."
+  }, {
+    icon: TrendingUp,
+    title: "Digital Transformation",
+    description: "Drive innovation and growth with comprehensive digital transformation strategies."
+  }];
+  const testimonials = [{
+    quote: "ETRUS Tech transformed our business operations with their Azure migration expertise. The transition was seamless and our efficiency has increased by 40%.",
+    author: "Sarah Johnson",
+    position: "CTO",
+    company: "TechCorp Industries"
+  }, {
+    quote: "Their Microsoft 365 implementation has revolutionized how our team collaborates. Outstanding support and deep technical knowledge.",
+    author: "Michael Chen",
+    position: "IT Director",
+    company: "Global Finance Solutions"
+  }, {
+    quote: "The Dynamics 365 solution ETRUS Tech delivered exceeded our expectations. Our sales team productivity has skyrocketed.",
+    author: "Emily Rodriguez",
+    position: "VP of Operations",
+    company: "Retail Innovations Inc"
+  }];
+  return <div className="min-h-screen">
       <Navigation />
       
       {/* Hero Section */}
-      <section 
-        className="relative min-h-screen flex items-center justify-center overflow-hidden"
-        style={{
-          backgroundImage: `linear-gradient(rgba(0, 82, 204, 0.85), rgba(0, 82, 204, 0.85)), url(${heroImage})`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-        }}
-      >
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden" style={{
+      backgroundImage: `linear-gradient(rgba(0, 82, 204, 0.85), rgba(0, 82, 204, 0.85)), url(${heroImage})`,
+      backgroundSize: 'cover',
+      backgroundPosition: 'center'
+    }}>
         <div className="container mx-auto px-4 py-32 relative z-10">
           <div className="max-w-4xl mx-auto text-center text-primary-foreground">
             <div className="inline-block px-4 py-2 bg-primary-foreground/10 backdrop-blur-sm rounded-full mb-6">
@@ -102,11 +84,11 @@ const Home = () => {
               </div>
               <div className="flex items-center gap-2">
                 <Users className="h-5 w-5" />
-                <span>500+ Successful Projects</span>
+                <span>Successful Projects</span>
               </div>
               <div className="flex items-center gap-2">
                 <TrendingUp className="h-5 w-5" />
-                <span>15+ Years Experience</span>
+                <span> Years Experience</span>
               </div>
             </div>
           </div>
@@ -125,9 +107,7 @@ const Home = () => {
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {services.map((service, index) => (
-              <ServiceCard key={index} {...service} />
-            ))}
+            {services.map((service, index) => <ServiceCard key={index} {...service} />)}
           </div>
           <div className="text-center mt-12">
             <Button asChild size="lg">
@@ -149,18 +129,8 @@ const Home = () => {
             </p>
           </div>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
-            <CaseStudyCard
-              title="Enterprise Cloud Migration"
-              description="Leading financial services company migrated 500+ workloads to Azure, achieving 60% cost reduction."
-              industry="Financial Services"
-              result="60% cost reduction, 99.9% uptime, enhanced security posture"
-            />
-            <CaseStudyCard
-              title="Digital Workplace Transformation"
-              description="Global retail chain deployed Microsoft 365 across 200+ locations, enabling seamless collaboration."
-              industry="Retail"
-              result="40% productivity increase, 50% reduction in IT tickets"
-            />
+            <CaseStudyCard title="Enterprise Cloud Migration" description="Leading financial services company migrated 500+ workloads to Azure, achieving 60% cost reduction." industry="Financial Services" result="60% cost reduction, 99.9% uptime, enhanced security posture" />
+            <CaseStudyCard title="Digital Workplace Transformation" description="Global retail chain deployed Microsoft 365 across 200+ locations, enabling seamless collaboration." industry="Retail" result="40% productivity increase, 50% reduction in IT tickets" />
           </div>
         </div>
       </section>
@@ -177,9 +147,7 @@ const Home = () => {
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-            {testimonials.map((testimonial, index) => (
-              <TestimonialCard key={index} {...testimonial} />
-            ))}
+            {testimonials.map((testimonial, index) => <TestimonialCard key={index} {...testimonial} />)}
           </div>
         </div>
       </section>
@@ -200,8 +168,6 @@ const Home = () => {
       </section>
 
       <Footer />
-    </div>
-  );
+    </div>;
 };
-
 export default Home;
