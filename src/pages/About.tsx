@@ -59,13 +59,19 @@ const About = () => {
             <h2 className="text-4xl font-bold mb-8 text-foreground">Our Story</h2>
             <div className="space-y-6 text-lg text-muted-foreground leading-relaxed">
               <p>
-                Founded in 2008, ETRUS Tech began with a simple mission: to help organizations harness the power of Microsoft technologies to drive meaningful business transformation. Over the past 15 years, we've grown from a small team of passionate technologists to a recognized Microsoft Partner serving clients across multiple industries.
+                ETRUS Technology P.L.C is a leading Ethiopian technology company committed to driving digital transformation through innovative and reliable IT solutions. We specialize in website development, mobile application design, and custom software development that help organizations operate efficiently and scale effectively.
               </p>
               <p>
-                Our journey with Microsoft has been one of continuous learning and evolution. As Microsoft's technology portfolio has expanded, so has our expertise. Today, we specialize in cloud solutions, enterprise applications, data analytics, and security - all powered by the Microsoft ecosystem.
+                As an official Microsoft Cloud Solution Provider (CSP) Partner, ETRUS Technology is authorized to offer, manage, and support a wide range of Microsoft cloud products and services, including Microsoft 365, Azure, and Dynamics 365. This partnership enables us to deliver integrated cloud-based solutions with flexible licensing, direct technical support, and tailored deployment services—helping our clients achieve seamless digital experiences and optimized performance across their operations.
               </p>
               <p>
-                What sets us apart is our commitment to understanding your business first, then applying technology second. We don't just implement solutions; we build partnerships that drive long-term success.
+                At ETRUS, we believe that technology is the foundation of progress. Our multidisciplinary team of developers, engineers, and digital experts work collaboratively to design intelligent, secure, and scalable systems that empower businesses to innovate and grow.
+              </p>
+              <p>
+                We are dedicated to maintaining the highest standards of quality, professionalism, and customer satisfaction. Every solution we deliver is built with precision, guided by our mission to simplify technology and make it a powerful tool for success.
+              </p>
+              <p className="font-semibold text-foreground">
+                ETRUS Technology P.L.C — Empowering Innovation. Enabling Growth.
               </p>
             </div>
           </div>
