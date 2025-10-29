@@ -2,42 +2,26 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { Award, Target, Users2, Lightbulb } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
-
 const About = () => {
-  const values = [
-    {
-      icon: Target,
-      title: "Mission-Driven",
-      description: "Empowering organizations to achieve more through innovative Microsoft solutions.",
-    },
-    {
-      icon: Users2,
-      title: "Client-Focused",
-      description: "Your success is our priority. We build lasting partnerships based on trust and results.",
-    },
-    {
-      icon: Lightbulb,
-      title: "Innovation First",
-      description: "Staying ahead of technology trends to deliver cutting-edge solutions.",
-    },
-    {
-      icon: Award,
-      title: "Excellence",
-      description: "Committed to the highest standards of quality and professional service delivery.",
-    },
-  ];
-
-  const certifications = [
-    "Microsoft Gold Partner",
-    "Azure Solutions Architect Expert",
-    "Microsoft 365 Certified",
-    "Dynamics 365 Certified Professional",
-    "Azure Security Engineer Associate",
-    "Power Platform Developer Associate",
-  ];
-
-  return (
-    <div className="min-h-screen">
+  const values = [{
+    icon: Target,
+    title: "Mission-Driven",
+    description: "Empowering organizations to achieve more through innovative Microsoft solutions."
+  }, {
+    icon: Users2,
+    title: "Client-Focused",
+    description: "Your success is our priority. We build lasting partnerships based on trust and results."
+  }, {
+    icon: Lightbulb,
+    title: "Innovation First",
+    description: "Staying ahead of technology trends to deliver cutting-edge solutions."
+  }, {
+    icon: Award,
+    title: "Excellence",
+    description: "Committed to the highest standards of quality and professional service delivery."
+  }];
+  const certifications = ["Microsoft Gold Partner", "Azure Solutions Architect Expert", "Microsoft 365 Certified", "Dynamics 365 Certified Professional", "Azure Security Engineer Associate", "Power Platform Developer Associate"];
+  return <div className="min-h-screen">
       <Navigation />
       
       {/* Hero Section */}
@@ -45,9 +29,7 @@ const About = () => {
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
             <h1 className="text-5xl md:text-6xl font-bold mb-6">About ETRUS Tech</h1>
-            <p className="text-xl opacity-90 leading-relaxed">
-              Your trusted Microsoft Partner delivering innovative solutions since 2008
-            </p>
+            <p className="text-xl opacity-90 leading-relaxed">   Your trusted Microsoft Partner delivering innovative solutions</p>
           </div>
         </div>
       </section>
@@ -88,8 +70,7 @@ const About = () => {
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
-            {values.map((value, index) => (
-              <Card key={index} className="bg-gradient-card hover:shadow-xl transition-all duration-300">
+            {values.map((value, index) => <Card key={index} className="bg-gradient-card hover:shadow-xl transition-all duration-300">
                 <CardContent className="p-6 text-center">
                   <div className="mb-4 inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary-light">
                     <value.icon className="h-8 w-8 text-primary" />
@@ -97,8 +78,7 @@ const About = () => {
                   <h3 className="text-xl font-semibold mb-3 text-foreground">{value.title}</h3>
                   <p className="text-muted-foreground">{value.description}</p>
                 </CardContent>
-              </Card>
-            ))}
+              </Card>)}
           </div>
         </div>
       </section>
@@ -120,14 +100,9 @@ const About = () => {
             </Card>
 
             <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-              {certifications.map((cert, index) => (
-                <div
-                  key={index}
-                  className="bg-primary-light text-primary p-4 rounded-lg text-center font-medium hover:shadow-md transition-all"
-                >
+              {certifications.map((cert, index) => <div key={index} className="bg-primary-light text-primary p-4 rounded-lg text-center font-medium hover:shadow-md transition-all">
                   {cert}
-                </div>
-              ))}
+                </div>)}
             </div>
           </div>
         </div>
@@ -158,8 +133,6 @@ const About = () => {
       </section>
 
       <Footer />
-    </div>
-  );
+    </div>;
 };
-
 export default About;
