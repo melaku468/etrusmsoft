@@ -5,6 +5,7 @@ import Footer from "@/components/Footer";
 import ServiceCard from "@/components/ServiceCard";
 import TestimonialCard from "@/components/TestimonialCard";
 import CaseStudyCard from "@/components/CaseStudyCard";
+import AnimatedBackground from "@/components/AnimatedBackground";
 import { Globe, Smartphone, Code, Cloud, Database, Shield } from "lucide-react";
 import heroImage from "@/assets/hero-bg.jpg";
 
@@ -62,6 +63,7 @@ const Home = () => {
         backgroundSize: 'cover',
         backgroundPosition: 'center'
       }}>
+        <AnimatedBackground />
         <div className="container mx-auto px-4 py-32 relative z-10">
           <div className="max-w-4xl mx-auto text-center text-primary-foreground">
             <div className="inline-block px-4 py-2 bg-primary-foreground/10 backdrop-blur-sm rounded-full mb-6">
