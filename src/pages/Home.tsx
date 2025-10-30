@@ -5,69 +5,73 @@ import Footer from "@/components/Footer";
 import ServiceCard from "@/components/ServiceCard";
 import TestimonialCard from "@/components/TestimonialCard";
 import CaseStudyCard from "@/components/CaseStudyCard";
-import { Cloud, Database, Shield, Zap, Users, TrendingUp } from "lucide-react";
+import { Globe, Smartphone, Code, Cloud, Database, Shield } from "lucide-react";
 import heroImage from "@/assets/hero-bg.jpg";
+
 const Home = () => {
   const services = [{
+    icon: Globe,
+    title: "Website Development",
+    description: "Custom, responsive websites built with modern technologies to elevate your online presence."
+  }, {
+    icon: Smartphone,
+    title: "Mobile App Development",
+    description: "Native and cross-platform mobile applications that deliver seamless user experiences."
+  }, {
+    icon: Code,
+    title: "Custom Software Development",
+    description: "Tailored software solutions designed to meet your unique business requirements."
+  }, {
     icon: Cloud,
-    title: "Azure Cloud Solutions",
-    description: "Migrate and optimize your infrastructure with Microsoft Azure for scalability and security."
+    title: "Microsoft Cloud Solutions",
+    description: "Azure, Microsoft 365, and Dynamics 365 implementation as an official Microsoft CSP Partner."
   }, {
     icon: Database,
-    title: "Data Analytics",
-    description: "Transform data into insights with Power BI and advanced analytics solutions."
+    title: "Data & Analytics",
+    description: "Transform your data into actionable insights with advanced analytics and BI solutions."
   }, {
     icon: Shield,
-    title: "Security & Compliance",
-    description: "Protect your business with enterprise-grade security powered by Microsoft technologies."
-  }, {
-    icon: Zap,
-    title: "Microsoft 365",
-    description: "Empower your workforce with integrated collaboration and productivity tools."
-  }, {
-    icon: Users,
-    title: "Dynamics 365",
-    description: "Streamline operations with intelligent business applications and CRM solutions."
-  }, {
-    icon: TrendingUp,
-    title: "Digital Transformation",
-    description: "Drive innovation and growth with comprehensive digital transformation strategies."
+    title: "IT Security & Support",
+    description: "Comprehensive security solutions and ongoing technical support for your IT infrastructure."
   }];
+  
   const testimonials = [{
-    quote: "ETRUS Tech transformed our business operations with their Azure migration expertise. The transition was seamless and our efficiency has increased by 40%.",
-    author: "Sarah Johnson",
+    quote: "ETRUS Technology delivered an exceptional e-commerce platform that transformed our business. The custom features and seamless user experience exceeded our expectations.",
+    author: "Dawit Bekele",
+    position: "CEO",
+    company: "Ethiopian Retail Group"
+  }, {
+    quote: "The mobile app ETRUS developed for us has revolutionized how our customers interact with our services. Professional team with outstanding technical expertise.",
+    author: "Mekdes Tadesse",
+    position: "Operations Manager",
+    company: "AddisConnect Solutions"
+  }, {
+    quote: "From website design to cloud migration, ETRUS Technology has been our trusted IT partner. Their comprehensive services have helped us scale efficiently.",
+    author: "Samuel Tesfaye",
     position: "CTO",
-    company: "TechCorp Industries"
-  }, {
-    quote: "Their Microsoft 365 implementation has revolutionized how our team collaborates. Outstanding support and deep technical knowledge.",
-    author: "Michael Chen",
-    position: "IT Director",
-    company: "Global Finance Solutions"
-  }, {
-    quote: "The Dynamics 365 solution ETRUS Tech delivered exceeded our expectations. Our sales team productivity has skyrocketed.",
-    author: "Emily Rodriguez",
-    position: "VP of Operations",
-    company: "Retail Innovations Inc"
+    company: "Ethiopian Financial Services"
   }];
-  return <div className="min-h-screen">
+
+  return (
+    <div className="min-h-screen">
       <Navigation />
       
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden" style={{
-      backgroundImage: `linear-gradient(rgba(0, 82, 204, 0.85), rgba(0, 82, 204, 0.85)), url(${heroImage})`,
-      backgroundSize: 'cover',
-      backgroundPosition: 'center'
-    }}>
+        backgroundImage: `linear-gradient(rgba(0, 82, 204, 0.85), rgba(0, 82, 204, 0.85)), url(${heroImage})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center'
+      }}>
         <div className="container mx-auto px-4 py-32 relative z-10">
           <div className="max-w-4xl mx-auto text-center text-primary-foreground">
             <div className="inline-block px-4 py-2 bg-primary-foreground/10 backdrop-blur-sm rounded-full mb-6">
-              <span className="text-sm font-semibold">Official Microsoft Partner</span>
+              <span className="text-sm font-semibold">Leading Ethiopian IT Solutions Provider</span>
             </div>
             <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
-              Empowering Business Through Microsoft Innovation
+              Empowering Innovation. Enabling Growth.
             </h1>
             <p className="text-xl md:text-2xl mb-8 text-primary-foreground/90 leading-relaxed">
-              Transform your organization with cutting-edge cloud solutions, powered by Microsoft technologies and delivered by certified experts.
+              Comprehensive IT solutions including website development, mobile apps, custom software, and Microsoft cloud services to transform your business.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button asChild size="xl" variant="hero">
@@ -80,15 +84,15 @@ const Home = () => {
             <div className="mt-12 flex flex-wrap justify-center gap-8 text-sm">
               <div className="flex items-center gap-2">
                 <Shield className="h-5 w-5" />
-                <span>Microsoft Certified</span>
+                <span>Microsoft CSP Partner</span>
               </div>
               <div className="flex items-center gap-2">
-                <Users className="h-5 w-5" />
-                <span>Successful Projects</span>
+                <Code className="h-5 w-5" />
+                <span>Custom Solutions</span>
               </div>
               <div className="flex items-center gap-2">
-                <TrendingUp className="h-5 w-5" />
-                <span> Years Experience</span>
+                <Globe className="h-5 w-5" />
+                <span>Full-Stack Development</span>
               </div>
             </div>
           </div>
@@ -100,14 +104,16 @@ const Home = () => {
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold mb-4 text-foreground">
-              Our Microsoft-Powered Services
+              Comprehensive IT Solutions
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Leverage the full power of Microsoft technologies with our comprehensive suite of services designed to accelerate your digital transformation.
+              From websites and mobile apps to enterprise cloud solutions, we deliver innovative technology services that drive your business forward.
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {services.map((service, index) => <ServiceCard key={index} {...service} />)}
+            {services.map((service, index) => (
+              <ServiceCard key={index} {...service} />
+            ))}
           </div>
           <div className="text-center mt-12">
             <Button asChild size="lg">
@@ -125,12 +131,22 @@ const Home = () => {
               Success Stories
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              See how we've helped organizations transform their operations with Microsoft solutions.
+              See how we've delivered transformative technology solutions across diverse industries.
             </p>
           </div>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
-            <CaseStudyCard title="Enterprise Cloud Migration" description="Leading financial services company migrated 500+ workloads to Azure, achieving 60% cost reduction." industry="Financial Services" result="60% cost reduction, 99.9% uptime, enhanced security posture" />
-            <CaseStudyCard title="Digital Workplace Transformation" description="Global retail chain deployed Microsoft 365 across 200+ locations, enabling seamless collaboration." industry="Retail" result="40% productivity increase, 50% reduction in IT tickets" />
+            <CaseStudyCard 
+              title="E-Commerce Platform Development" 
+              description="Built a comprehensive online marketplace with custom features, payment integration, and inventory management system." 
+              industry="Retail" 
+              result="300% increase in online sales, seamless user experience, scalable architecture" 
+            />
+            <CaseStudyCard 
+              title="Enterprise Mobile Application" 
+              description="Developed cross-platform mobile app for field operations with offline capabilities and real-time synchronization." 
+              industry="Logistics" 
+              result="50% faster operations, improved data accuracy, enhanced customer satisfaction" 
+            />
           </div>
         </div>
       </section>
@@ -147,7 +163,9 @@ const Home = () => {
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-            {testimonials.map((testimonial, index) => <TestimonialCard key={index} {...testimonial} />)}
+            {testimonials.map((testimonial, index) => (
+              <TestimonialCard key={index} {...testimonial} />
+            ))}
           </div>
         </div>
       </section>
@@ -159,7 +177,7 @@ const Home = () => {
             Ready to Transform Your Business?
           </h2>
           <p className="text-xl mb-8 max-w-2xl mx-auto opacity-90">
-            Let's discuss how our Microsoft expertise can drive your digital transformation journey.
+            Let's discuss how our comprehensive IT solutions can accelerate your digital transformation.
           </p>
           <Button asChild size="xl" variant="hero">
             <Link to="/contact">Schedule a Consultation</Link>
@@ -168,6 +186,8 @@ const Home = () => {
       </section>
 
       <Footer />
-    </div>;
+    </div>
+  );
 };
+
 export default Home;
