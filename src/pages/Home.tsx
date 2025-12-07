@@ -66,9 +66,9 @@ const Home = () => {
         <AnimatedBackground />
         <div className="container mx-auto px-4 py-32 relative z-10">
           <div className="max-w-4xl mx-auto text-center text-primary-foreground">
-            <div className="inline-block px-4 py-2 bg-primary-foreground/10 backdrop-blur-sm rounded-full mb-6">
+            {/* <div className="inline-block px-4 py-2 bg-primary-foreground/10 backdrop-blur-sm rounded-full mb-6">
               <span className="text-sm font-semibold">Leading Ethiopian IT Solutions Provider</span>
-            </div>
+            </div> */}
             <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
               Empowering Innovation. Enabling Growth.
             </h1>
