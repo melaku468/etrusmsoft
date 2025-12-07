@@ -76,9 +76,9 @@ const Home = () => {
               Comprehensive IT solutions including website development, mobile apps, custom software, and Microsoft cloud services to transform your business.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button asChild size="xl" variant="hero">
+              {/* <Button asChild size="xl" variant="hero">
                 <Link to="/contact">Get Started Today</Link>
-              </Button>
+              </Button> */}
               <Button asChild size="xl" variant="outline" className="border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary">
                 <Link to="/services">Explore Services</Link>
               </Button>
