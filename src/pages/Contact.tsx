@@ -105,7 +105,7 @@ const Contact = () => {
                       value={formData.phone}
                       onChange={handleChange}
                       className="mt-1"
-                      placeholder="+1 (555) 123-4567"
+                      placeholder="+251 XXX XXX XXX"
                     />
                   </div>
 
@@ -146,8 +146,8 @@ const Contact = () => {
                     </div>
                     <div>
                       <h3 className="font-semibold text-foreground mb-1">Email</h3>
-                      <p className="text-muted-foreground">info@etrustech.com</p>
-                      <p className="text-muted-foreground">support@etrustech.com</p>
+                      <p className="text-muted-foreground">info@etrus.space.com</p>
+                      <p className="text-muted-foreground">support@etrus.space.com</p>
                     </div>
                   </div>
 
@@ -157,8 +157,8 @@ const Contact = () => {
                     </div>
                     <div>
                       <h3 className="font-semibold text-foreground mb-1">Phone</h3>
-                      <p className="text-muted-foreground">+1 (555) 123-4567</p>
-                      <p className="text-muted-foreground">+1 (555) 123-4568</p>
+                      <p className="text-muted-foreground">+251 96 868 3834</p>
+                      {/* <p className="text-muted-foreground">+1 (555) 123-4568</p> */}
                     </div>
                   </div>
 
@@ -169,10 +169,13 @@ const Contact = () => {
                     <div>
                       <h3 className="font-semibold text-foreground mb-1">Office</h3>
                       <p className="text-muted-foreground">
+                        Bole, Addis Ababa, Ethiopia
+                      </p>
+                                            {/* <p className="text-muted-foreground">
                         123 Tech Avenue<br />
                         San Francisco, CA 94102<br />
                         United States
-                      </p>
+                      </p> */}
                     </div>
                   </div>
 
