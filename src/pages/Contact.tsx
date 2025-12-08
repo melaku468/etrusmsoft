@@ -66,7 +66,7 @@ const Contact = () => {
                       onChange={handleChange}
                       required
                       className="mt-1"
-                      placeholder="John Doe"
+                      placeholder=""
                     />
                   </div>
 
@@ -80,7 +80,7 @@ const Contact = () => {
                       onChange={handleChange}
                       required
                       className="mt-1"
-                      placeholder="john@company.com"
+                      placeholder="abc@company.com"
                     />
                   </div>
 
