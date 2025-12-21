@@ -68,14 +68,14 @@ const Footer = () => {
                 Addis Ababa, Ethiopia
               </li>
             </ul>
-            <div className="flex gap-4 mt-4">
+            {/* <div className="flex gap-4 mt-4">
               <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
                 <Linkedin className="h-5 w-5" />
               </a>
               <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
                 <Twitter className="h-5 w-5" />
               </a>
-            </div>
+            </div> */}
           </div>
         </div>
 

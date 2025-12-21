@@ -52,9 +52,9 @@ const About = () => {
               <p>
                 We are dedicated to maintaining the highest standards of quality, professionalism, and customer satisfaction. Every solution we deliver is built with precision, guided by our mission to simplify technology and make it a powerful tool for success.
               </p>
-              <p className="font-semibold text-foreground">
+              {/* <p className="font-semibold text-foreground">
                 ETRUS Technology P.L.C — Empowering Innovation. Enabling Growth.
-              </p>
+              </p> */}
             </div>
           </div>
         </div>
