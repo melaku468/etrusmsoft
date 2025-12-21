@@ -109,7 +109,7 @@ const About = () => {
       </section>
 
       {/* Stats Section */}
-      <section className="py-24 bg-gradient-hero text-primary-foreground">
+      {/* <section className="py-24 bg-gradient-hero text-primary-foreground">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-5xl mx-auto text-center">
             <div>
@@ -130,7 +130,7 @@ const About = () => {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
 
       <Footer />
     </div>;
