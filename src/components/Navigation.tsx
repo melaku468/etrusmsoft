@@ -45,16 +45,13 @@ const Navigation = () => {
               key={link.path}
               to={link.path}
               className={`text-sm font-semibold transition-colors duration-300 ${isActive(link.path)
-                  ? isScrolled ? "text-primary" : "text-primary-foreground border-b-2 border-primary-foreground"
-                  : isScrolled ? "text-foreground hover:text-primary" : "text-primary-foreground hover:text-primary-foreground/80"
+                ? isScrolled ? "text-primary" : "text-primary-foreground border-b-2 border-primary-foreground"
+                : isScrolled ? "text-foreground hover:text-primary" : "text-primary-foreground hover:text-primary-foreground/80"
                 }`}
             >
               {link.label}
             </Link>
           ))}
-          <Button asChild size="default" variant={isScrolled ? "default" : "hero"}>
-            <Link to="/contact">Get Started</Link>
-          </Button>
         </div>
 
         {/* Mobile Menu Button */}
@@ -69,11 +66,6 @@ const Navigation = () => {
           {navLinks.map(link => <Link key={link.path} to={link.path} onClick={() => setIsMobileMenuOpen(false)} className={`text-sm font-medium transition-colors duration-300 py-2 ${isActive(link.path) ? "text-primary" : "text-foreground hover:text-primary"}`}>
             {link.label}
           </Link>)}
-          <Button asChild size="default" className="w-full">
-            <Link to="/contact" onClick={() => setIsMobileMenuOpen(false)}>
-              Get Started
-            </Link>
-          </Button>
         </div>
       </div>}
     </div>
