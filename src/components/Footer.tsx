@@ -44,10 +44,26 @@ const Footer = () => {
           <div>
             <h3 className="font-semibold text-foreground mb-4">Services</h3>
             <ul className="space-y-2">
-              <li className="text-sm text-muted-foreground">Cloud Solutions</li>
-              <li className="text-sm text-muted-foreground">Azure Services</li>
-              <li className="text-sm text-muted-foreground">Microsoft 365</li>
-              <li className="text-sm text-muted-foreground">Dynamics 365</li>
+              <li>
+                <Link to="/services/cloud-solutions" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                  Cloud Solutions
+                </Link>
+              </li>
+              <li>
+                <Link to="/services/azure-services" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                  Azure Services
+                </Link>
+              </li>
+              <li>
+                <Link to="/services/microsoft-365" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                  Microsoft 365
+                </Link>
+              </li>
+              <li>
+                <Link to="/services/dynamics-365" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                  Dynamics 365
+                </Link>
+              </li>
             </ul>
           </div>
 

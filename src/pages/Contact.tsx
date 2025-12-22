@@ -1,41 +1,114 @@
+"use client";
+
 import { useState } from "react";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import * as z from "zod";
+
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
+
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent } from "@/components/ui/card";
-import { Label } from "@/components/ui/label";
+
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form";
+
 import { useToast } from "@/hooks/use-toast";
-import { Mail, Phone, MapPin, Clock } from "lucide-react";
+import { Mail, Phone, MapPin, Clock, Loader2 } from "lucide-react";
+
+/* -------------------- Validation Schema -------------------- */
+
+const contactFormSchema = z.object({
+  name: z.string().min(2, { message: "Name must be at least 2 characters." }),
+  email: z.string().email({ message: "Please enter a valid email address." }),
+  company: z.string().optional(),
+  phone: z
+    .string()
+    .min(10, { message: "Phone number must be at least 10 digits." })
+    .optional()
+    .or(z.literal("")),
+  message: z.string().min(10, { message: "Message must be at least 10 characters." }),
+});
+
+type ContactFormValues = z.infer<typeof contactFormSchema>;
+
+/* -------------------- Component -------------------- */
 
 const Contact = () => {
   const { toast } = useToast();
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    company: "",
-    phone: "",
-    message: "",
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const form = useForm<ContactFormValues>({
+    resolver: zodResolver(contactFormSchema),
+    defaultValues: {
+      name: "",
+      email: "",
+      company: "",
+      phone: "",
+      message: "",
+    },
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    toast({
-      title: "Message Sent!",
-      description: "Thank you for contacting us. We'll get back to you within 24 hours.",
-    });
-    setFormData({ name: "", email: "", company: "", phone: "", message: "" });
+  /* -------------------- Submit Handler -------------------- */
+
+  const onSubmit = async (values: ContactFormValues) => {
+    setIsSubmitting(true);
+
+    try {
+      const FORMSPREE_ID = import.meta.env.VITE_FORMSPREE_ID;
+
+      if (!FORMSPREE_ID) {
+        throw new Error("Formspree ID not configured");
+      }
+
+      const response = await fetch(`https://formspree.io/f/${FORMSPREE_ID}`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify(values),
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to send message");
+      }
+
+      toast({
+        title: "Message Sent!",
+        description: "Thank you for contacting us. We'll get back to you within 24 hours.",
+      });
+
+      form.reset();
+    } catch (error) {
+      toast({
+        title: "Error",
+        description:
+          error instanceof Error && error.message === "Formspree ID not configured"
+            ? "Form is not configured. Please contact the site administrator."
+            : "There was a problem sending your message. Please try again later.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
+  /* -------------------- UI -------------------- */
 
   return (
     <div className="min-h-screen">
       <Navigation />
-      
+
       {/* Hero Section */}
       <section className="pt-32 pb-16 bg-gradient-hero text-primary-foreground">
         <div className="container mx-auto px-4">
@@ -48,162 +121,141 @@ const Contact = () => {
         </div>
       </section>
 
-      {/* Contact Form & Info */}
+      {/* Contact Section */}
       <section className="py-24 bg-gradient-subtle">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
+
             {/* Contact Form */}
             <Card className="bg-gradient-card shadow-xl">
               <CardContent className="p-8">
-                <h2 className="text-3xl font-bold mb-6 text-foreground">Send Us a Message</h2>
-                <form onSubmit={handleSubmit} className="space-y-6">
-                  <div>
-                    <Label htmlFor="name">Full Name *</Label>
-                    <Input
-                      id="name"
+                <h2 className="text-3xl font-bold mb-6">Send Us a Message</h2>
+
+                <Form {...form}>
+                  <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+
+                    <FormField
+                      control={form.control}
                       name="name"
-                      value={formData.name}
-                      onChange={handleChange}
-                      required
-                      className="mt-1"
-                      placeholder=""
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>Full Name *</FormLabel>
+                          <FormControl>
+                            <Input placeholder="Your Name" {...field} />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
                     />
-                  </div>
 
-                  <div>
-                    <Label htmlFor="email">Email Address *</Label>
-                    <Input
-                      id="email"
+                    <FormField
+                      control={form.control}
                       name="email"
-                      type="email"
-                      value={formData.email}
-                      onChange={handleChange}
-                      required
-                      className="mt-1"
-                      placeholder="abc@company.com"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>Email Address *</FormLabel>
+                          <FormControl>
+                            <Input type="email" placeholder="abc@company.com" {...field} />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
                     />
-                  </div>
 
-                  <div>
-                    <Label htmlFor="company">Company</Label>
-                    <Input
-                      id="company"
+                    <FormField
+                      control={form.control}
                       name="company"
-                      value={formData.company}
-                      onChange={handleChange}
-                      className="mt-1"
-                      placeholder="Your Company Name"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>Company</FormLabel>
+                          <FormControl>
+                            <Input placeholder="Your Company Name" {...field} />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
                     />
-                  </div>
 
-                  <div>
-                    <Label htmlFor="phone">Phone Number</Label>
-                    <Input
-                      id="phone"
+                    <FormField
+                      control={form.control}
                       name="phone"
-                      type="tel"
-                      value={formData.phone}
-                      onChange={handleChange}
-                      className="mt-1"
-                      placeholder="+251 XXX XXX XXX"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>Phone Number</FormLabel>
+                          <FormControl>
+                            <Input type="tel" placeholder="+251 XXX XXX XXX" {...field} />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
                     />
-                  </div>
 
-                  <div>
-                    <Label htmlFor="message">Message *</Label>
-                    <Textarea
-                      id="message"
+                    <FormField
+                      control={form.control}
                       name="message"
-                      value={formData.message}
-                      onChange={handleChange}
-                      required
-                      className="mt-1 min-h-[150px]"
-                      placeholder="Tell us about your project or requirements..."
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>Message *</FormLabel>
+                          <FormControl>
+                            <Textarea
+                              placeholder="Tell us about your project or requirements..."
+                              className="min-h-[150px]"
+                              {...field}
+                            />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
                     />
-                  </div>
 
-                  <Button type="submit" size="lg" className="w-full">
-                    Send Message
-                  </Button>
-                </form>
+                    <Button type="submit" size="lg" className="w-full" disabled={isSubmitting}>
+                      {isSubmitting ? (
+                        <>
+                          <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                          Sending...
+                        </>
+                      ) : (
+                        "Send Message"
+                      )}
+                    </Button>
+
+                  </form>
+                </Form>
               </CardContent>
             </Card>
 
-            {/* Contact Information */}
+            {/* Contact Info */}
             <div className="space-y-8">
-              <div>
-                <h2 className="text-3xl font-bold mb-6 text-foreground">Get in Touch</h2>
-                <p className="text-lg text-muted-foreground leading-relaxed mb-8">
-                  Whether you're looking to migrate to the cloud, modernize your workplace, or implement new business applications, our team of Microsoft experts is here to help.
-                </p>
-              </div>
-
               <Card className="bg-gradient-card shadow-md">
                 <CardContent className="p-6 space-y-6">
-                  <div className="flex items-start gap-4">
-                    <div className="flex-shrink-0 w-12 h-12 rounded-full bg-primary-light flex items-center justify-center">
-                      <Mail className="h-6 w-6 text-primary" />
-                    </div>
+
+                  <div className="flex gap-4">
+                    <Mail className="h-6 w-6 text-primary" />
                     <div>
-                      <h3 className="font-semibold text-foreground mb-1">Email</h3>
-                      <p className="text-muted-foreground">info@etrus.space</p>
-                      <p className="text-muted-foreground">support@etrus.space</p>
+                      <p>info@etrus.space</p>
+                      <p>support@etrus.space</p>
                     </div>
                   </div>
 
-                  <div className="flex items-start gap-4">
-                    <div className="flex-shrink-0 w-12 h-12 rounded-full bg-primary-light flex items-center justify-center">
-                      <Phone className="h-6 w-6 text-primary" />
-                    </div>
-                    <div>
-                      <h3 className="font-semibold text-foreground mb-1">Phone</h3>
-                      <p className="text-muted-foreground">+251 96 868 3834</p>
-                      {/* <p className="text-muted-foreground">+1 (555) 123-4568</p> */}
-                    </div>
+                  <div className="flex gap-4">
+                    <Phone className="h-6 w-6 text-primary" />
+                    <p>+251 96 868 3834</p>
                   </div>
 
-                  <div className="flex items-start gap-4">
-                    <div className="flex-shrink-0 w-12 h-12 rounded-full bg-primary-light flex items-center justify-center">
-                      <MapPin className="h-6 w-6 text-primary" />
-                    </div>
-                    <div>
-                      <h3 className="font-semibold text-foreground mb-1">Office</h3>
-                      <p className="text-muted-foreground">
-                        Bole, Addis Ababa, Ethiopia
-                      </p>
-                                            {/* <p className="text-muted-foreground">
-                        123 Tech Avenue<br />
-                        San Francisco, CA 94102<br />
-                        United States
-                      </p> */}
-                    </div>
+                  <div className="flex gap-4">
+                    <MapPin className="h-6 w-6 text-primary" />
+                    <p>Bole, Addis Ababa, Ethiopia</p>
                   </div>
 
-                  <div className="flex items-start gap-4">
-                    <div className="flex-shrink-0 w-12 h-12 rounded-full bg-primary-light flex items-center justify-center">
-                      <Clock className="h-6 w-6 text-primary" />
-                    </div>
-                    <div>
-                      <h3 className="font-semibold text-foreground mb-1">Business Hours</h3>
-                      <p className="text-muted-foreground">Monday - Friday: 8:30 AM - 5:30 PM</p>
-                      <p className="text-muted-foreground">24/7 Support Available</p>
-                    </div>
+                  <div className="flex gap-4">
+                    <Clock className="h-6 w-6 text-primary" />
+                    <p>Mon–Fri: 8:30 AM – 5:30 PM</p>
                   </div>
-                </CardContent>
-              </Card>
 
-              <Card className="bg-gradient-hero text-primary-foreground shadow-md">
-                <CardContent className="p-6">
-                  <h3 className="font-bold text-xl mb-3">Need Immediate Assistance?</h3>
-                  <p className="mb-4 opacity-90">
-                    Our support team is available 24/7 for urgent matters and existing clients.
-                  </p>
-                  <Button variant="hero" size="lg" className="w-full">
-                    Call Support Now
-                  </Button>
                 </CardContent>
               </Card>
             </div>
+
           </div>
         </div>
       </section>
