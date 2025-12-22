@@ -75,35 +75,24 @@ const Microsoft365 = () => {
             {/* Migration Section */}
             <section className="py-24 bg-background">
                 <div className="container mx-auto px-4">
-                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 items-center max-w-6xl mx-auto">
-                        <div className="order-2 lg:order-1">
-                            <h2 className="text-2xl md:text-3xl font-bold mb-6">M365 Migration Experts</h2>
-                            <div className="space-y-6">
-                                <div className="flex gap-4">
-                                    <div className="mt-1 h-5 w-5 md:h-6 md:w-6 text-primary shrink-0"><CheckCircle2 /></div>
-                                    <div>
-                                        <h4 className="font-bold mb-1 text-sm md:text-base">Email Migration</h4>
-                                        <p className="text-xs md:text-sm text-muted-foreground">Safe and secure transfer of all your mailbox data from legacy systems to Exchange Online.</p>
-                                    </div>
-                                </div>
-                                <div className="flex gap-4">
-                                    <div className="mt-1 h-5 w-5 md:h-6 md:w-6 text-primary shrink-0"><CheckCircle2 /></div>
-                                    <div>
-                                        <h4 className="font-bold mb-1 text-sm md:text-base">SharePoint Setup</h4>
-                                        <p className="text-xs md:text-sm text-muted-foreground">Structure your company's data and build internal wikis for better knowledge sharing.</p>
-                                    </div>
-                                </div>
-                                <div className="flex gap-4">
-                                    <div className="mt-1 h-5 w-5 md:h-6 md:w-6 text-primary shrink-0"><CheckCircle2 /></div>
-                                    <div>
-                                        <h4 className="font-bold mb-1 text-sm md:text-base">Teams Integration</h4>
-                                        <p className="text-xs md:text-sm text-muted-foreground">Configure Teams for voice, meetings, and application integration to boost productivity.</p>
-                                    </div>
-                                </div>
+                    <div className="max-w-4xl mx-auto">
+                        <h2 className="text-3xl font-bold mb-12 text-center">M365 Migration Experts</h2>
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+                            <div className="flex flex-col items-center">
+                                <div className="h-12 w-12 text-primary mb-4"><CheckCircle2 className="h-full w-full" /></div>
+                                <h4 className="font-bold mb-2 text-lg">Email Migration</h4>
+                                <p className="text-sm text-muted-foreground">Safe and secure transfer of all your mailbox data from legacy systems to Exchange Online.</p>
                             </div>
-                        </div>
-                        <div className="order-1 lg:order-2">
-                            <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80" alt="Team collaborating" className="rounded-2xl shadow-xl md:shadow-2xl w-full h-auto" />
+                            <div className="flex flex-col items-center">
+                                <div className="h-12 w-12 text-primary mb-4"><CheckCircle2 className="h-full w-full" /></div>
+                                <h4 className="font-bold mb-2 text-lg">SharePoint Setup</h4>
+                                <p className="text-sm text-muted-foreground">Structure your company's data and build internal wikis for better knowledge sharing.</p>
+                            </div>
+                            <div className="flex flex-col items-center">
+                                <div className="h-12 w-12 text-primary mb-4"><CheckCircle2 className="h-full w-full" /></div>
+                                <h4 className="font-bold mb-2 text-lg">Teams Integration</h4>
+                                <p className="text-sm text-muted-foreground">Configure Teams for voice, meetings, and application integration to boost productivity.</p>
+                            </div>
                         </div>
                     </div>
                 </div>
